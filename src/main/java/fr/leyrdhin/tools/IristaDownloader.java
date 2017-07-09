@@ -75,6 +75,10 @@ public class IristaDownloader {
                 if (m.matches()) {
                     String filename = m.group(1);
                     File destination = new File(destinationFolder, filename);
+                    if (destination.exists()) {
+                        System.out.println("Skipping " + destination + ": file exists.");
+                        continue;
+                    }
                     downloadFile(url, destination);
                     System.out.println("Image " + destination + " saved.");
                 }
